@@ -1,6 +1,6 @@
 title: 我所理解的View绘制
 date: 2015-12-21 19:25:49
-tags:
+tags: android
 ---
 <!-- 本文是对View绘制的理解的笔记文章，以及一些三方View的源码分析 -->
 <!--more test  -->

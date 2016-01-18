@@ -1,6 +1,6 @@
 title: 安卓上面的NFC简单应用实例
 date: 2015-02-02 16:52:30
-tags:
+tags: android
 ---
 
 #背景
@@ -234,7 +234,7 @@ M1卡一共有16个扇区（每个扇区有4个数据块，即总共有64个数�
 注1：
     /**
      * Converts the byte array to HEX string. 字节 数组转字符串
-     * 
+     *
      * @param buffer
      *            the buffer.
      * @return the HEX string.
@@ -260,7 +260,7 @@ M1卡一共有16个扇区（每个扇区有4个数据块，即总共有64个数�
 注2：
     /**
      * Converts the HEX string to byte array. 字符串转字节数组
-     * 
+     *
      * @param hexString
      *            the HEX string.
      * @return the byte array.

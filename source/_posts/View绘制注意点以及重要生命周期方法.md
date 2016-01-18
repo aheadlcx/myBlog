@@ -1,8 +1,9 @@
 title: View绘制注意点以及重要生命周期方法
 date: 2015-12-21 19:38:09
-tags:
+tags: android
 ---
-<!-- 本文主要讲述对View的非常用用法以及自定义View要点 -->
+本文主要讲述对View的非常用用法以及自定义View要点
+<!--more  -->
 
 >本文参考了众多前辈的文章和书籍
 >>[任玉刚的相关文章和书籍](http://blog.csdn.net/singwhatiwanna)
@@ -34,3 +35,10 @@ view.measure(widthMeasureSpec, heightMeasureSpec);
 这是因为，在AT_MOST和EXACTLY下，父View调用getChildMeasureSpec方法时，主要子View不是写死的dp，给子View返回的measureSpec中  
 的SpecSize都是父View的SpecSize - （父padding 和子view的margin）。view的onMeasure方法，在AT_MOST和EXACTLY下，都是直接SpecSize
 
+# View 的一些重要方法
+1. requestLayout， **此方法原理，需要理解window和ViewRootImp等过程, 后面会列出**
+* 如果没有做其他的操作，requestLayout 方法仅仅会出发measure 和 layout 过程。
+* 如果改变了一个view的layoutparams，例如改变了width，就会出发draw过程。
+
+2. invalidate
+invalidate 方法 仅仅会出发draw过程。

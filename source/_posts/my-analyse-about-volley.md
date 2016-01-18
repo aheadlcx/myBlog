@@ -1,6 +1,6 @@
 title: my analyse about volley
 date: 2014-12-21 22:01:02
-tags:
+tags: android
 ---
 #volley使用简介
 volley,是谷歌官方出的http请求框架，方便开发者处理相关的网络请求处理。volley目前仅仅适合简单快速的http请求（原因稍后会提到）。
@@ -323,7 +323,7 @@ PriorityBlockingQueue<Request<?>> mNetworkQueue，传入的这个是PriorityBloc
                                     cacheKey);
                 }
             } else {
-                
+
                 // Insert 'null' queue for this cacheKey, indicating there is
                 // now a request in
                 // flight.
@@ -338,4 +338,3 @@ PriorityBlockingQueue<Request<?>> mNetworkQueue，传入的这个是PriorityBloc
 
 大概就这样了。本人看完volley的代码，感觉到我工作中的项目代码和他一比，质量上被秒了。。总感觉到volley用到了很多设计模式，写的很好。
 不过目前还没吸收到肚子中去，有空得再研究一些第三方的http框架，对比下，才能更好的吸收volley的设计之美。如有研究volley设计模式的朋友，敬请教育~~
-

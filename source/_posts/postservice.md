@@ -1,6 +1,6 @@
 title: 关于安卓中的服务service
 date: 2014-12-14 20:54:44
-tags:
+tags: android
 ---
 
 #服务的2种启动方式以及区别
@@ -32,7 +32,7 @@ messenger在构造方法中可以实现和handle关联，使用messenger通信�
 这里是activity
 #java
         public class MessengerAct extends Activity {
-        
+
         private Messenger sMessenger = null;
 
         private final Messenger aMessenger = new Messenger(new ActHandler());
@@ -96,15 +96,15 @@ messenger在构造方法中可以实现和handle关联，使用messenger通信�
     此为service
 
     public class MessengerReceiver extends Service{
-        
+
         public static String TAG = MessengerReceiver.class.getSimpleName();
 
         private Messenger aMessenger = null;
 
         private final Messenger sMessenger = new Messenger(new RecHandler());
-        
+
         private class RecHandler extends Handler{
-            
+
             @Override
             public void handleMessage(Message msg) {
                 // TODO Auto-generated method stub
@@ -125,22 +125,22 @@ messenger在构造方法中可以实现和handle关联，使用messenger通信�
             // TODO Auto-generated method stub
             return sMessenger.getBinder();
         }
-        
+
         @Override
         public void onCreate() {
             // TODO Auto-generated method stub
             super.onCreate();
             Log.i(TAG, "process id is "+android.os.Process.myPid());
-            
+
             Notification mNotification = new Notification(R.drawable.ic_launcher, "通知come", System.currentTimeMillis());
-            
+
             Intent n= new Intent(this,SecondAct.class);
             PendingIntent mPendingIntent = PendingIntent.getActivity(this, 0, n, 0);
             mNotification.setLatestEventInfo(this, "title", " content text", mPendingIntent);
             startForeground(1, mNotification);
         }
-        
-        
+
+
 
     }
 
@@ -151,7 +151,7 @@ messenger在构造方法中可以实现和handle关联，使用messenger通信�
     package com.example.mycode.aidl;
     interface MyAIDLService{
         int incre(int a, int b);
-        
+
         int decre(int a, int b);
 
     }
@@ -182,12 +182,12 @@ APP A中的AService aservice，在清单文件中注册个action，因为在APP 
     其中stub，就是binder的抽象子类。
     在APP B中，把APP中的AIDL文件copy过来，必须把原来的包路径也copy过来。这样在APP B中就可以调用service中的函数了。
     private ServiceConnection connection = new  ServiceConnection() {
-        
+
         @Override
         public void onServiceDisconnected(ComponentName name) {
-            
+
         }
-        
+
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
 //          myBinder = (MyBinder) service;
