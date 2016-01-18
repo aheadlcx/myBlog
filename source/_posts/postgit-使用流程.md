@@ -54,3 +54,5 @@ Stash 带有这个功能。其实也可以，在每次push到个人库前，先�
 这个公共featuer分支，可以按照迭代版本来设定。
 6. leader，review 代码，审核开发者提交的pr。merge feature A 分支到 公共feature C 分支。
 7. 然后leader，merger 公共feature C分支到dev分支。
+8. 每次把功能基本做完的时候，就从dev拉取出来一个分支 release，提交给测试组。在这之后，从release拉取代码，  
+开展bug分支作业。稳定可以发布之后，就从release merge到dev分支。再merge dev分支到master分支。以供发布。
