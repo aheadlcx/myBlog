@@ -2,6 +2,7 @@ title: Window和ViewRootImp的总结
 date: 2016-01-14 20:25:48
 tags: [android, Window, ViewRootImp, PhoneWindow]
 categories: android
+updated: 2016-01-20 21:15:18
 ---
 本文是View绘制和事件分发的知识整理收尾篇，顺便也简单的整理了一下window相关的知识。
 <!--more  -->
@@ -9,6 +10,8 @@ categories: android
 >本文参考了众多前辈的文章和书籍
 >[任玉刚的相关文章和书籍](http://blog.csdn.net/singwhatiwanna)
 >[郭霖博客](http://blog.csdn.net/guolin_blog)
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=28283344&auto=0&height=66"></iframe>
 
 
 # activity的View 视图创建。

@@ -1,10 +1,13 @@
 title: git 使用流程
 date: 2016-01-18 15:44:55
-tags: git
+tags: [git, 工作流]
 categories: git
 ---
 记录git个人操作实践。多用命令行，少用GUI，可以有助理解git的工作原理。
 <!--more  -->
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=5268118&auto=1&height=66"></iframe>
+
 
 # git远程仓库
 我们一般clone下来的仓库，默认都是origin的，其实git是可以支持多远程仓库的。
@@ -54,5 +57,4 @@ Stash 带有这个功能。其实也可以，在每次push到个人库前，先�
 这个公共featuer分支，可以按照迭代版本来设定。
 6. leader，review 代码，审核开发者提交的pr。merge feature A 分支到 公共feature C 分支。
 7. 然后leader，merger 公共feature C分支到dev分支。
-8. 每次把功能基本做完的时候，就从dev拉取出来一个分支 release，提交给测试组。在这之后，从release拉取代码，  
-开展bug分支作业。稳定可以发布之后，就从release merge到dev分支。再merge dev分支到master分支。以供发布。
+8. 每次把功能基本做完的时候，就从dev拉取出来一个分支release，提交给测试组。在这之后，从release拉取代码，开展bug分支作业。稳定可以发布之后，就从release merge到dev分支。再merge dev分支到master分支。以供发布。
