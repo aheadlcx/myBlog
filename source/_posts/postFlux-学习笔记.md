@@ -3,7 +3,7 @@ date: 2016-03-04 11:35:35
 tags: [android, 架构设计]
 categories: android
 ---
-至今还没有见过一种自己满意的 app 架构模式，因此学习 Flux ，多尝试，拖体验各架构的优缺点。
+至今还没有见过一种自己满意的 app 架构模式，因此学习 Flux ，多尝试，多体验各架构的优缺点。
 <!--more  -->
 >[原文](http://lgvalle.xyz/2015/08/04/flux-architecture/)
 >[泡网的翻译](http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0816/3311.html)

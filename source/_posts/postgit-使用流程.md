@@ -35,6 +35,8 @@ categories: git
 8. git reset --hard HEAD^  恢复到上一个版本
 9. git reset --hard commitId 恢复到特定版本
 10. git push --set-upstream origin branchName     设置本地分支的跟踪分支
+11. git push origin --tags 推送所有tag到仓库.相应改为 git pull 则是拉取tag下来
+
 
 
 

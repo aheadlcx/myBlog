@@ -66,6 +66,9 @@ Find Actions(ctrl+shift+a)输入”Analyze Data Flow to Here”，可以查看�
 
 15. 如果想2个方法块代码，上下移动
 可以先选中其中一个方法的全部或部分代码，shift + cmd + up / down  就可以整体移动了
+
+16. 调出代码模板，让你选择。
+ cmd + j 可以弹出一个很漂亮的代码模板选择框给你。
 # 收集的细节
 
 1. Language Injection
