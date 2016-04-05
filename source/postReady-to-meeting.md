@@ -15,7 +15,7 @@ paint.setShader
 ## APP 架构 MVP MVVM CLEAN FLUX
 ## Glide 是如何设计的？相比 Picasso 有哪些优点和不足？Fresco 有什么特点？
 这个，可以简单看下别人的文章，理解下流程。即可。
-1. ![Triena 公众号文章](http://mp.weixin.qq.com/s?__biz=MzAxNjI3MDkzOQ==&mid=400056342&idx=1&sn=894325d70f16a28bfe8d6a4da31ec304&scene=2&srcid=10210byVbMGLHg7vXUJLgHaR&from=timeline&isappinstalled=0#rd)
+1. [Triena 公众号文章](http://mp.weixin.qq.com/s?__biz=MzAxNjI3MDkzOQ==&mid=400056342&idx=1&sn=894325d70f16a28bfe8d6a4da31ec304&scene=2&srcid=10210byVbMGLHg7vXUJLgHaR&from=timeline&isappinstalled=0#rd)
 
 ## 加密算法 RSA AES DES MD5
 ## Handler  Looper ThreadLocal 这几个是怎么工作的。
