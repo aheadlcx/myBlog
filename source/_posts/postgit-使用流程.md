@@ -47,6 +47,7 @@ categories: git
 3. git stash list 是查看有哪些保存的现场
 4. git stash apply 是恢复现场，但是不删除
 5. git stash drop 是删除现场。
+6. git stash pop stash@{1} 可以把编号为 1  的记录，恢复并且删除。
 
 # git工作流
 这是本人工作中用到的一个工作流，简单介绍下。
