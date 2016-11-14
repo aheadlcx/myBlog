@@ -36,7 +36,7 @@ categories: git
 9. git reset --hard commitId 恢复到特定版本
 10. git push --set-upstream origin branchName     设置本地分支的跟踪分支
 11. git push origin --tags 推送所有tag到仓库.相应改为 git pull 则是拉取tag下来
-
+12. git pull --rebase origin dev 以变基的方式来同步 origin 的 dev 分支。
 
 
 
@@ -72,7 +72,42 @@ a 是append
 :wq 是保存并退出。
 多按几次esc，就是退出到阅读模式。
 按e，i，a，都可以进入到vim的编辑模式，光标位置不一样。
+2.  如果在 feature 分支提交了，但是需要在 master 分支上应用此修改，因此可以
+选择 git cherry-pick commitId , 有可能会产生冲突，add commit 即可。
 
+# 撤销相关的操作
+1. revert 恢复
+提交了一个 commit ，版本回退是可以，但是如果希望在 commit history 看到这个操作的话，更好  
+的选择是 git revert commitId ，这样会做一个相反的操作。
+2. checkout
+git checkout -- filename 把工作内容撤销
+3. git rebase
+首先，它定位你当前检出分支和master之间的共同祖先节点（common ancestor）。  
+然后，它将当前检出的分支重置到祖先节点（ancestor），并将后来所有的提交都暂存起来。  
+最后，它将当前检出分支推进至master末尾，同时在master最后一次提交之后，  
+再次提交那些在暂存区的变更。  
+rebase 如果有冲突的话，需要自行解决，并且 add ，之后就 rebase -- continue 。而不是 commit
+4. git rebase -i commitId
+场景： 你开始朝一个既定目标开发功能，但是中途你感觉用另一个方法更好。你已经有十几个提交，  
+但是你只想要其中的某几个，其他的都可以删除不要。  
+这个命令会打开 文本编辑器，然后可以删除不想要的 commitId ，保留剩下的 commitId 。
+5. 停止跟踪一个已经跟踪的文件
+如果一个文件已经被添加到 git 中，现在再加进去 gitIgnore ，这个是没用的。其中一个办法是  
+先删除了，再添加进去。另外一个办法是，git rm -cached fileName ，并且不会在磁盘上删除  
+该文件。
+
+# submodule
+添加子模块：$ git submodule add [url] [path]
+如：$ git submodule add git://github.com/soberh/ui-libs.git src/main/webapp/ui-libs
+初始化子模块：$ git submodule init ----只在首次检出仓库时运行一次就行
+更新子模块：$ git submodule update ----每次更新或切换分支后都需要运行一下
+删除子模块：（分4步走哦）
++ $ git rm --cached [path]
++  编辑“.gitmodules”文件，将子模块的相关配置节点删除掉
++ 编辑“.git/config”文件，将子模块的相关配置节点删除掉
++ 手动删除子模块残留的目录
+
+> [git 子模块使用](http://easior.is-programmer.com/posts/42541.html)
 # git book 文档
 这个比较完整的官方文档
 http://git-scm.com/book/zh/v2

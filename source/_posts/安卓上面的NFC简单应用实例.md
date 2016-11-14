@@ -3,41 +3,43 @@ date: 2015-02-02 16:52:30
 tags: android
 ---
 
-#背景
+# 背景
     需要在安装系统上，实现对NFC标签的读取数据功能。
 
 
-#NFC简介
+# NFC简介
     NFC，是Near Field Communication（近场通信）的简称。在api 9开始支持nfc，不过不完善，api 10支持比较完善了，建议目标app最小API 为10；
 <!-- more -->
 
-#安卓手机支持的NFC标签类型
+# 安卓手机支持的NFC标签类型
     支持IsoDep、NfcA、NfcB、NfcF、NfcV、Ndef、NdefFormatable、MifareClassic和MifareUltralight类型。
 如果是是仅仅实现读取数据，建议取MifareClassic类型的NFC 标签。
 
 
-#NFC标签和android设备的通信
+# NFC标签和android设备的通信
 他们之间的通信，在底层由谷歌实现了的，JNI层和native层的代码，针对各个芯片，是有不同的类实现的，没有很好的统一，可读性很差（本人没有去读，【深入理解Android：WiFi、NFC和GPS卷】书中原话）。在应用层，android系统都是讲读取到的信息，组装成了一个intent的。我们可能需要在activity的onCreate中对接受到的intent实现读取，或者在activity的onNewIntent方法中实现读取信息。接下来我们分析这个intent的分发系统
 
 
-#NFC权限
+# NFC权限
 如果你的app需要使用nfc，必须在清单文件中注册权限。
 
         <uses-permission android:name="android.permission.NFC" />
 
 
-#NFC的分发系统
+# NFC的分发系统
     android为这个包含nfc信息的Intent的分发，创造了2个分发系统。
 a、标签分发系统(个人意译名字)；
 b、前台分发系统（the Foreground Dispatch System）
 
-##a、标签分发系统
+## a、标签分发系统
     标签分发系统，是为了选择这个带有nfc信息的intent交给谁来处理，他可识别的级别是activity级别的。
 
     一共包括ACTION_NDEF_DISCOVERED、ACTION_TECH_DISCOVERED和ACTION_TAG_DISCOVERED。intent被划分为这3种类型的intent。
 这3种intent的优先级从高到低。如果 一个带有nfc信息的intent生成、并且多个app注册了nfc或者同一个app里面的多个activity注册了，他会优先寻找注册了ACTION_NDEF_DISCOVERED类型的activity，如果没有注册了ACTION_NDEF_DISCOVERED类型的activity，则会寻找注册了ACTION_TECH_DISCOVERED类型的activity。如此类推。
 
     以下代码示例为，给activity注册响应ACTION_TECH_DISCOVERED类型的intent。
+
+```java
      <intent-filter >
                 <action android:name="android.nfc.action.TECH_DISCOVERED" />
      </intent-filter>
@@ -84,7 +86,7 @@ b、前台分发系统（the Foreground Dispatch System）
             <tech>android.nfc.tech.NdefFormatable</tech>  
         </tech-list>  
     </resources>  
-
+```
 
     上述xml文件，意思是，这个activity可识别的nfc标签技术类型。一个NFC信息的intent，我们可以得到他的Tag对象
 
@@ -93,14 +95,14 @@ b、前台分发系统（the Foreground Dispatch System）
     tagFromIntent.getTechList()，返回值是String[],他是IsoDep、NfcA、NfcB、NfcF、NfcV、Ndef、NdefFormatable、MifareClassic和MifareUltralight类的全路径名中的一个或者几个或者全部。
     上述我们为activity注册用的nfc_tech_filter.xml文件，他包含了一系列的tech-list，这其中必须有一个tech-list，是这个NFC标签支持的技术类型的子集，这个activity才可以识别到这个nfc。
 
-##前台分发系统（the Foreground Dispatch System）
+## 前台分发系统（the Foreground Dispatch System）
 
     前台分发系统是为了解决这么一个情景的。如果一个手机有多个app注册了响应所有的nfc信息，app A已经在前台显示了，activity A1目前在栈顶并且希望优先响应nfc标签。那么这个时候如果有个nfc刷卡了，还是交给标签分发系统，去派发这个intent的话，就显得有点不妥了。
     前台分发系统，就是解决了这个问题，可以让activity A1优先响应。
 
     注册和取消注册前台分发系统，必须分别在onResume和onPause之间进行，并且不可以调换顺序（需要在主线程进行这个操作）
 
-###注册前台分发系统
+### 注册前台分发系统
     下面实例代码为，注册识别ACTION_TECH_DISCOVERED类型的nfc标签，支持MifareClassic技术类型的的nfc标签。
     PendingIntent mPendingIntent = null;
         IntentFilter[] mFilters = null;
@@ -126,7 +128,7 @@ b、前台分发系统（the Foreground Dispatch System）
             }
         }
 
-###取消注册前台分发系统
+### 取消注册前台分发系统
 
     mNfcAdapter = NfcAdapter.getDefaultAdapter(mActivity);
         if (mNfcAdapter != null) {
@@ -136,13 +138,13 @@ b、前台分发系统（the Foreground Dispatch System）
         }
 
 
-#MifareClassic类型的NFC标签的数据结构
+# MifareClassic类型的NFC标签的数据结构
     M1卡就是说容量是1K的卡，M4的卡就是容量4K的卡，市场上M1卡，略多点。
 M1卡一共有16个扇区（每个扇区有4个数据块，即总共有64个数据块），每个扇区分别有下标为0、1、2、3的数据块。第3个数据块为秘钥块。读取每个扇区里面的数据，
 都必须先验证秘钥，验证通过了才可以读取其他数据块。秘钥块的数据结构为 key A 控制子 key B。怎么重新写秘钥，暂时没试过。
 
 
-#nfc信息的读取
+# nfc信息的读取
     每刷一次卡，我们都是希望在当前界面刷，所以一般都是在onNewIntent方法中处理相关的读取操作。
     以下实例代码为读取MifareClassic类型的NFC标签
 
@@ -232,6 +234,8 @@ M1卡一共有16个扇区（每个扇区有4个数据块，即总共有64个数�
 
 注释
 注1：
+
+```java
     /**
      * Converts the byte array to HEX string. 字节 数组转字符串
      *
@@ -256,8 +260,11 @@ M1卡一共有16个扇区（每个扇区有4个数据块，即总共有64个数�
         }
         return bufferString;
     }
+```
 
 注2：
+
+```java
     /**
      * Converts the HEX string to byte array. 字符串转字节数组
      *
@@ -318,3 +325,4 @@ M1卡一共有16个扇区（每个扇区有4个数据块，即总共有64个数�
 
         return byteArray;
     }
+```

@@ -8,6 +8,18 @@ categories": [android, meeting]
 ## 画圆
 canvas.diawCircle
 paint.setShader
+## 线程池
+public ThreadPoolExecutor(int corePoolSize,
+                              int maximumPoolSize,
+                              long keepAliveTime,
+                              TimeUnit unit,
+                              BlockingQueue<Runnable> workQueue,
+                              ThreadFactory threadFactory) {
+        this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,
+             threadFactory, defaultHandler);
+    }
+
+
 ## 触摸事件
 ## 下拉刷新原理
 ## LRU Cache的实现

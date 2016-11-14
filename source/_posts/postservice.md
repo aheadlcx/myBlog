@@ -30,7 +30,8 @@ messenger在构造方法中可以实现和handle关联，使用messenger通信�
 
 
 这里是activity
-#java
+
+```java
         public class MessengerAct extends Activity {
 
         private Messenger sMessenger = null;
@@ -93,8 +94,11 @@ messenger在构造方法中可以实现和handle关联，使用messenger通信�
             super.onStop();
         }
     }
+```
+
     此为service
 
+```java
     public class MessengerReceiver extends Service{
 
         public static String TAG = MessengerReceiver.class.getSimpleName();
@@ -143,11 +147,13 @@ messenger在构造方法中可以实现和handle关联，使用messenger通信�
 
 
     }
-
+```
 
 ##【方式四】AIDL，一般用于实现多个应用程序共享同一个Service的功能。
 
 首先需要建立aidl文件，基本和java语言类似。
+
+```java
     package com.example.mycode.aidl;
     interface MyAIDLService{
         int incre(int a, int b);
@@ -155,15 +161,22 @@ messenger在构造方法中可以实现和handle关联，使用messenger通信�
         int decre(int a, int b);
 
     }
+```
+
 APP A中的AService aservice，在清单文件中注册个action，因为在APP B中是没有APP中的service这个类的，必须隐式调用。
-#java
+
+```java
     <service android:name=".receiver.MessengerReceiver"
      android:process=":remote" >
      <intent-filter>
     <action android:name="com.example.mycode.test.aidlservice"/>
     </intent-filter>
      </service>
+```
+
 在A中的 AService的onbind方法中，返回
+
+```java
     MyAIDLService.Stub aidlBinder = new Stub() {
 
         @Override
@@ -178,9 +191,12 @@ APP A中的AService aservice，在清单文件中注册个action，因为在APP 
             return a - b;
         }
     };
+```
 
     其中stub，就是binder的抽象子类。
     在APP B中，把APP中的AIDL文件copy过来，必须把原来的包路径也copy过来。这样在APP B中就可以调用service中的函数了。
+
+```java
     private ServiceConnection connection = new  ServiceConnection() {
 
         @Override
@@ -200,6 +216,7 @@ APP A中的AService aservice，在清单文件中注册个action，因为在APP 
             }
         }
     };
+```
 
     这样就实现了多APP操作一个service了。就是比较麻烦点。
 

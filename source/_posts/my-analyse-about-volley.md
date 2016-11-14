@@ -2,14 +2,15 @@ title: my analyse about volley
 date: 2014-12-21 22:01:02
 tags: android
 ---
-#volley使用简介
+# volley使用简介
 volley,是谷歌官方出的http请求框架，方便开发者处理相关的网络请求处理。volley目前仅仅适合简单快速的http请求（原因稍后会提到）。
-##使用例子
+## 使用例子
 第一步，获得请求队列RequestQueue，这个直接调用Volley.newRequestQueue(context)方法即可获得。
 第二步，实现自己的Request，然后把这个Request添加到刚刚获得的请求队列RequestQueue中去。
-##源码跟踪解析
-###请求队列RequestQueue的获得
-#java
+## 源码跟踪解析
+### 请求队列RequestQueue的获得
+
+```java
     public static RequestQueue newRequestQueue(Context context, HttpStack stack) {
             File cacheDir = new File(context.getCacheDir(), DEFAULT_CACHE_DIR);
 
@@ -38,25 +39,31 @@ volley,是谷歌官方出的http请求框架，方便开发者处理相关的网
 
             return queue;
         }
+```
 
 HurlStack是一个通过HttpURLConnection，而HttpClientStack则是HttpClient来通信的。跟到代码里面，发现这2个类都是进行一些参数的设置，这里暂时不贴代码出来了。
 他们2个都是继承HttpStack的，都实现了performRequest方法，这个performRequest方法签名如下
-#java
-    public HttpResponse performRequest(Request<?> request, Map<String, String> additionalHeaders)
 
+```java
+    public HttpResponse performRequest(Request<?> request, Map<String, String> additionalHeaders)
+```
 
 这个就是根据网络请求request 和 特殊的请求头来进行网络请求，得到响应并且返回 HttpResponse。这样可以在HttpURLConnection和HttpClient，统一了代码。
 
 第34行，BasicNetwork是http请求的工具类，并且在构造函数中传入了上一步构造的stack。
 
     在第36行，这才是真正的构造了请求队列RequestQueue，我们来看看构造方法中的2个参数。
-#java
+
+```java
     public RequestQueue(Cache cache, Network network) {
             this(cache, network, DEFAULT_NETWORK_THREAD_POOL_SIZE);
         }
+```
+
 cache看名字就知道了是缓存相关的操作类了，再看看上面代码中的第14行和36行，new DiskBasedCache(cacheDir)，传入一个file去，作为缓存。
 我们也跟代码去
-#java
+
+```java
      public DiskBasedCache(File rootDirectory, int maxCacheSizeInBytes) {
             mRootDirectory = rootDirectory;
             mMaxCacheSizeInBytes = maxCacheSizeInBytes;
@@ -70,6 +77,8 @@ cache看名字就知道了是缓存相关的操作类了，再看看上面代码
         public DiskBasedCache(File rootDirectory) {
             this(rootDirectory, DEFAULT_DISK_USAGE_BYTES);
         }
+```
+
 这2个构造方法，下面个就是给了个默认值，大小是5M。
 我们来看看这个类的所有方法
 ![DiskBasedCache](https://raw.githubusercontent.com/aheadlcx/learngit/master/DiskBasedCache.jpg)
@@ -77,7 +86,8 @@ cache看名字就知道了是缓存相关的操作类了，再看看上面代码
 
 
 回到我们刚刚的研究源码主线上  queue.start();就这么一个start方法，到底干了些什么，我们再跟进去看看。
-#java
+
+```java
     public void start() {
             stop(); // Make sure any currently running dispatchers are stopped.
             // Create the cache dispatcher and start it.
@@ -96,9 +106,11 @@ cache看名字就知道了是缓存相关的操作类了，再看看上面代码
                 networkDispatcher.start();
             }
         }
+```
 
 他首先开了一个用于处理缓存相关的线程CacheDispatcher，这个代码我们再跟进去看。
-#java
+
+```java
     public void run() {
             if (DEBUG) VolleyLog.v("start new dispatcher");
             Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
@@ -185,13 +197,15 @@ cache看名字就知道了是缓存相关的操作类了，再看看上面代码
                 }
             }
         }
+```
 
 代码有点长，上面我都注释了一点，大概意思就是这个请求是否应该被cancel了，如果是就不要给我做任何操作了。说到这个cancel，就想起了官方的AsyncTask的cancel方法了
 ，这个AsyncTask的cancel方法很坑爹，及时你cancel了，线程还是会执行相关的操作（万一哪天哪位帅哥在进行长期耗时或者查询数据库的时候，上了个同步锁，就kengdie了。），仅仅是cancel了就不回调给UI线程。回过来，这个run方法里面，还检查了是否过期应该刷新之类的，如果是就这个request放到网络请求队列中去了。
 
 
 下面我们继续来看看RequestQueue的start方法中。
-#java
+
+```java
         //mDispatchers的长度，默认是4，所以下面的for循环一共是5次，0-4
             for (int i = 0; i < mDispatchers.length; i++) {
                 NetworkDispatcher networkDispatcher = new NetworkDispatcher(
@@ -199,9 +213,11 @@ cache看名字就知道了是缓存相关的操作类了，再看看上面代码
                 mDispatchers[i] = networkDispatcher;
                 networkDispatcher.start();
             }
+```
 
 默认开启了5个网络线程，我们来看看网络线程的run方法
-#java
+
+```java
     public void run() {
             Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
             while (true) {
@@ -273,14 +289,16 @@ cache看名字就知道了是缓存相关的操作类了，再看看上面代码
                 }
             }
         }
+```
 
 这个run方法也是一个死循环，和缓存线程一样。疑惑来了，我这个网络线程默认是5个，这个不怕安全问题么？那我们再来看看构造的时候，传入的参数，看看用的是什么容器。
 PriorityBlockingQueue<Request<?>> mNetworkQueue，传入的这个是PriorityBlockingQueue容器，看名字就猜到了个大概了吧。。这个类代码有点多，暂时不上代码了。有空再去研究下这个容器是怎么实现的。
 我们的第一步获得一个请求队列，目前研究完毕了。
 
-##第二步，add一个request
+## 第二步，add一个request
 我们再回头来看RequestQueue这个类的add方法
-#java
+
+```java
     public <T> Request<T> add(Request<T> request) {
         // Tag the request as belonging to this queue and add it to the set of
         // current requests.
@@ -335,6 +353,7 @@ PriorityBlockingQueue<Request<?>> mNetworkQueue，传入的这个是PriorityBloc
             return request;
         }
     }
+```
 
 大概就这样了。本人看完volley的代码，感觉到我工作中的项目代码和他一比，质量上被秒了。。总感觉到volley用到了很多设计模式，写的很好。
 不过目前还没吸收到肚子中去，有空得再研究一些第三方的http框架，对比下，才能更好的吸收volley的设计之美。如有研究volley设计模式的朋友，敬请教育~~
