@@ -353,3 +353,6 @@ View 显示的流程如下：
   + 2. 调用 ViewRootImpl 的 setView 方法
   + 3. 在 ViewRootImpl 的 setView 方法里面，会调用一个 IWindowSession ( 实际实现是  
     Session ) 的 addToDisplay 方法，完成 Window 的添加
+
+# 遗留疑问
++ Activity 的 View 什么时候被销毁。销毁逻辑代码在何处。 added 2016.12.10
