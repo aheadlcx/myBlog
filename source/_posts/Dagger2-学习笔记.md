@@ -186,6 +186,15 @@ public interface UserComponent extends ActivityComponent {
 }
 ```
 
+# Component
+## Component 依赖
+> Component dependencies
+
+> While subcomponents are the simplest way to compose subgraphs of bindings, subcomponents are tightly coupled with the parents; they may use any binding defined by their ancestor component and subcomponents. As an alternative, components can use bindings only from another component interface by declaring a component dependency. When a type is used as a component dependency, each provision method on the dependency is bound as a provider. Note that only the bindings exposed as provision methods are available through component dependencies.
+
+Component 依赖，如果 A 依赖 B ，那么 B 的 provision 方法就可以提供给 A 使用，类似  
+于 Module 中的 provider 方法
+
 # 未明事项
 在 Component 中有一个方法，返回了一个抽象类，甚至接口，但是这个 Component 上有 Module ，  
 这个 Module 同时，还用注解 Provide 标记了一个方法，返回了一个实现类。这个时候采用了是实现类。
