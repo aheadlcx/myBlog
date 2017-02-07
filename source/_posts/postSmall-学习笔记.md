@@ -4,6 +4,7 @@ tags:
 ---
 
 ##  疑问点
+
 * 资源加载
 AssetManager 的 addAssetPath 方法可以添加一个资源搜索路径，然后就可以拿到一个新的   
 Resource 的了，代码如下：
@@ -26,6 +27,10 @@ AssetManager mAssetManager;
 结合起来的。
 
 * 其他组件包打包成 so 文件并存放在宿主中。这个到底是怎么安装的
+
+* dex 会不会重复插入了
+* 资源合并
+
 
 ## Small 框架的 API 理解
 
@@ -159,3 +164,16 @@ public boolean resolveBundle(Bundle bundle) {
 看看 ApkBundleLauncher 的。  
 把 dex 从 so 文件中加载了出来，变成了 optDex ,这时还没有插入进去。收集了所有的 Activity  
 和 intentFilter ，为以后启动做准备。
+
+
+#### public void postSetUp()
+只有 ApkBundleLauncher 重载了该方法.做了以下几个事情：  
+
+* 合并所有插件以及宿主的资源。
+* 把所有 dex 插入进去。
+* 插件的 so 文件的插入。
+* 手动调用插件的 application 的 onCreate 方法.
+* 延迟初始化 mLazyInitProviders .
+
+**todo ，查看资源的合并，资源的插入，dex 的插入兼容性方面，以及第二次插入会不会  
+造成重复插入的问题**
