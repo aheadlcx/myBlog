@@ -30,7 +30,13 @@ AssetManager mAssetManager;
 
 * dex 会不会重复插入了
 * 资源合并
+* Small.open(Uri uri)
+查询参数
+*  assets 目录下的文件 bundle.json 可以这样打开
 
+```java
+sPatchManifestFile = new File(Small.getContext().getFilesDir(), "bundle.json");
+```
 
 ## Small 框架的 API 理解
 
@@ -157,13 +163,36 @@ public boolean resolveBundle(Bundle bundle) {
 
 * SoBundleLauncher。
 不是 Host ，才会调用方法 resolveBundle 。
-解析了插件的 XML 中的 application 等相关信息(versionCode，versionName)。解析了插件的路径等
+解析了插件的 XML 中的 application 等相关信息(versionCode，versionName)。解析了插件的路径等  
+暂时发现，并没有解析插件中的 activity 等。仅仅解析了 application 以及其主题。
 
 #### public void loadBundle(Bundle bundle)
 重载了该方法的有 AssetBundleLauncher 和 ApkBundleLauncher 。  
 看看 ApkBundleLauncher 的。  
 把 dex 从 so 文件中加载了出来，变成了 optDex ,这时还没有插入进去。收集了所有的 Activity  
-和 intentFilter ，为以后启动做准备。
+和 intentFilter ，为以后启动做准备。  
+
+
+这里手机的 activity 以及其 intentFilter 信息是在 BundleParser 的 collectActivities  
+方法中收集的。  
+BundleParser 里面含有这个成员变量，mPackageInfo.activities 是保存了所有 activity 基本  
+信息， mIntentFilters 是一个 map 对象，格式如下  
+
+```java
+ConcurrentHashMap<String, List<IntentFilter>>
+```
+
+以 activity 为名字，保存了其对应的所有 intentFilter 。
+
+
+最后，将 activity 相关信息都转移到了 ApkBundleLauncher 中。
+
+```java
+sLoadedActivities  = new ConcurrentHashMap<String, ActivityInfo>()
+
+sLoadedIntentFilters = new ConcurrentHashMap<String, List<IntentFilter>>();
+```
+
 
 
 #### public void postSetUp()
