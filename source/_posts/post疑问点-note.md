@@ -18,7 +18,15 @@ tags:
 Activity里面有一个成员变量mToken代表的就是它，token可以唯一地标识一个Activity对象，  
 它在Activity的attach方法里面初始化。
 
+## 2, Activity 和 Application 的 context
+Activity 的 context 的 ContextImpl . 在 ActivityThread 的 performLaunchActivity  
+方法中，创建.( createBaseContextForActivity(r,activity) ) ，然后通过 activity 的  
+attach 方法传入。
 
+
+Application 同样式 ContextImpl ，创建和传入时机是：  
+ActivityThread( performLaunchActivity ) -> LoadedApk( makeApplication )  
+mInstrumentation( newApplication ) -> Application( attach )
 
 ## 3. APP 进程 和 AMS 的通讯。
 APP 进程，向 AMS 通信，是通过 ActivityManagerNative 来的。具体实现是在  
