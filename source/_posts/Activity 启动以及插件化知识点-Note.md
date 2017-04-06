@@ -26,7 +26,11 @@ mActivities.put(r.token, r);
 在进行其他生命周期的时候，则是( performResumeActivity 举例 )
 ActivityClientRecord r = mActivities.get(token);
 r.activity.performResume();
+
 ```
+
+因此在插件化开发中，通过占坑的方式实现，动态加载 Activity ，送给 AMS 的是占坑的 Activity ，  
+但是在 ActivityThread 的回调中，操作的是，目标的 Activity ，因此生命周期得以实现。
 
 
 传入的值是 ActivityClientRecord.token . 而这个值，又是从何而来的呢。可以从调用链追  
