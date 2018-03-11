@@ -1,0 +1,19 @@
+AppPlugin
+
+
+packageName = net.wequick.example.small.lib.afterutils
+
+
+classesDir = /Users/apple/mycode/androidFile/github/Small/Android/Sample/lib.afterutils/build/intermediates/classes/release
+
+
+bkClassesDir = /Users/apple/mycode/androidFile/github/Small/Android/Sample/lib.afterutils/build/intermediates/classes/release~
+
+packagePath = net/wequick/example/small/lib/afterutils
+
+project srcDirs = [/Users/apple/mycode/androidFile/github/Small/Android/Sample/lib.afterutils/src/main/java]
+ apFile = /Users/apple/mycode/androidFile/github/Small/Android/Sample/lib.afterutils/build/intermediates/res/resources-release.ap_
+ symbolDir = /Users/apple/mycode/androidFile/github/Small/Android/Sample/lib.afterutils/build/intermediates/symbols/release
+ sourceDir =  /Users/apple/mycode/androidFile/github/Small/Android/Sample/lib.afterutils/build/generated/source/r/release
+ splitRJavaFile = /Users/apple/mycode/androidFile/github/Small/Android/Sample/lib.afterutils/build/generated/source/r/small/net/wequick/example/small/lib/afterutils/R.java
+ mergerDir = /Users/apple/mycode/androidFile/github/Small/Android/Sample/lib.afterutils/build/intermediates/incremental/mergeReleaseResources

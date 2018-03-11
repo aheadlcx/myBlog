@@ -1,0 +1,73 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+volley使用简介	/Users/apple/mycode/myBlog/source/_posts/my-analyse-about-volley.md	/^#volley使用简介$/;"	function	line:5
+使用例子	/Users/apple/mycode/myBlog/source/_posts/my-analyse-about-volley.md	/^##使用例子$/;"	function	line:7
+源码跟踪解析	/Users/apple/mycode/myBlog/source/_posts/my-analyse-about-volley.md	/^##源码跟踪解析$/;"	function	line:10
+请求队列RequestQueue的获得	/Users/apple/mycode/myBlog/source/_posts/my-analyse-about-volley.md	/^###请求队列RequestQueue的获得$/;"	function	line:11
+java	/Users/apple/mycode/myBlog/source/_posts/my-analyse-about-volley.md	/^#java$/;"	function	line:12
+java	/Users/apple/mycode/myBlog/source/_posts/my-analyse-about-volley.md	/^#java$/;"	function	line:44
+java	/Users/apple/mycode/myBlog/source/_posts/my-analyse-about-volley.md	/^#java$/;"	function	line:53
+java	/Users/apple/mycode/myBlog/source/_posts/my-analyse-about-volley.md	/^#java$/;"	function	line:59
+java	/Users/apple/mycode/myBlog/source/_posts/my-analyse-about-volley.md	/^#java$/;"	function	line:80
+java	/Users/apple/mycode/myBlog/source/_posts/my-analyse-about-volley.md	/^#java$/;"	function	line:101
+java	/Users/apple/mycode/myBlog/source/_posts/my-analyse-about-volley.md	/^#java$/;"	function	line:194
+java	/Users/apple/mycode/myBlog/source/_posts/my-analyse-about-volley.md	/^#java$/;"	function	line:204
+第二步，add一个request	/Users/apple/mycode/myBlog/source/_posts/my-analyse-about-volley.md	/^##第二步，add一个request$/;"	function	line:281
+java	/Users/apple/mycode/myBlog/source/_posts/my-analyse-about-volley.md	/^#java$/;"	function	line:283
+服务的2种启动方式以及区别	/Users/apple/mycode/myBlog/source/_posts/postservice.md	/^#服务的2种启动方式以及区别$/;"	function	line:6
+服务所在线程和进程	/Users/apple/mycode/myBlog/source/_posts/postservice.md	/^#服务所在线程和进程$/;"	function	line:12
+主线程中的service	/Users/apple/mycode/myBlog/source/_posts/postservice.md	/^##主线程中的service$/;"	function	line:13
+远程service	/Users/apple/mycode/myBlog/source/_posts/postservice.md	/^##远程service$/;"	function	line:15
+service和activity之间的通信	/Users/apple/mycode/myBlog/source/_posts/postservice.md	/^#service和activity之间的通信$/;"	function	line:18
+【方式一】，利用广播。	/Users/apple/mycode/myBlog/source/_posts/postservice.md	/^##【方式一】，利用广播。$/;"	function	line:20
+【方式二】，利用binder和结合service的接口内部类。	/Users/apple/mycode/myBlog/source/_posts/postservice.md	/^##【方式二】，利用binder和结合service的接口内部类。$/;"	function	line:23
+【方式三】使用messenger通信	/Users/apple/mycode/myBlog/source/_posts/postservice.md	/^##【方式三】使用messenger通信$/;"	function	line:26
+java	/Users/apple/mycode/myBlog/source/_posts/postservice.md	/^#java$/;"	function	line:33
+【方式四】AIDL，一般用于实现多个应用程序共享同一个Service的功能。	/Users/apple/mycode/myBlog/source/_posts/postservice.md	/^##【方式四】AIDL，一般用于实现多个应用程序共享同一个Service的功能。$/;"	function	line:148
+java	/Users/apple/mycode/myBlog/source/_posts/postservice.md	/^#java$/;"	function	line:159
+Activity的window，ViewRootImpl,DecorView	/Users/apple/mycode/myBlog/source/_posts/post我所理解的View绘制-md.md	/^# Activity的window，ViewRootImpl,DecorView$/;"	function	line:11
+MeasureSpec在View绘制中的作用	/Users/apple/mycode/myBlog/source/_posts/post我所理解的View绘制-md.md	/^# MeasureSpec在View绘制中的作用$/;"	function	line:19
+MeasureSpec本身的含义	/Users/apple/mycode/myBlog/source/_posts/post我所理解的View绘制-md.md	/^## MeasureSpec本身的含义$/;"	function	line:21
+MeasureSpec和LayoutParams的关系	/Users/apple/mycode/myBlog/source/_posts/post我所理解的View绘制-md.md	/^## MeasureSpec和LayoutParams的关系$/;"	function	line:27
+ViewGroup的measure过程	/Users/apple/mycode/myBlog/source/_posts/post我所理解的View绘制-md.md	/^## ViewGroup的measure过程$/;"	function	line:49
+View在ViewGroup中，被出发measure的过程	/Users/apple/mycode/myBlog/source/_posts/post我所理解的View绘制-md.md	/^## View在ViewGroup中，被出发measure的过程$/;"	function	line:54
+View的自身measure过程	/Users/apple/mycode/myBlog/source/_posts/post我所理解的View绘制-md.md	/^## View的自身measure过程$/;"	function	line:149
+第一级标题	/Users/apple/mycode/myBlog/source/_posts/test-line.md	/^# 第一级标题$/;"	function	line:5
+第二级别标题	/Users/apple/mycode/myBlog/source/_posts/test-line.md	/^## 第二级别标题$/;"	function	line:6
+三级标题	/Users/apple/mycode/myBlog/source/_posts/test-line.md	/^### 三级标题/;"	function	line:8
+title 测试下	/Users/apple/mycode/myBlog/source/_posts/test-post.md	/^##title 测试下$/;"	function	line:6
+拿到view的测试宽高	/Users/apple/mycode/myBlog/source/_posts/View绘制注意点以及重要生命周期方法.md	/^# 拿到view的测试宽高$/;"	function	line:12
+View绘制注意点	/Users/apple/mycode/myBlog/source/_posts/View绘制注意点以及重要生命周期方法.md	/^# View绘制注意点$/;"	function	line:31
+首先做安全校验	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^# 首先做安全校验$/;"	function	line:8
+onFilterTouchEventForSecurity方法会检查当前ViewGroup和此motionEvent是否已经被其他window挡着了	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^## onFilterTouchEventForSecurity方法会检查当前ViewGroup和此motionEvent是否已经被其他window挡着了$/;"	function	line:9
+如果是donw事件，就恢复状态	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^## 如果是donw事件，就恢复状态$/;"	function	line:13
+检查是否拦截事件，当时down事件，或者之前已经有对此事件感兴趣的子View（mFirstTouchTarget）	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^## 检查是否拦截事件，当时down事件，或者之前已经有对此事件感兴趣的子View（mFirstTouchTarget）$/;"	function	line:24
+如果事件还没有取消或者没有被拦截	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^## 如果事件还没有取消或者没有被拦截$/;"	function	line:50
+如果是down事件（实际上还有几个逻辑判断，未明）	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^### 如果是down事件（实际上还有几个逻辑判断，未明）$/;"	function	line:54
+遍历所有子view	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^#### 遍历所有子view$/;"	function	line:60
+过滤掉不合适的子View	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^##### 过滤掉不合适的子View$/;"	function	line:64
+把事件传递到子View，看子View是否感兴趣，返回true代表，子View对此事件感兴趣	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^##### 把事件传递到子View，看子View是否感兴趣，返回true代表，子View对此事件感兴趣$/;"	function	line:69
+如果对此事件感兴趣	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^###### 如果对此事件感兴趣$/;"	function	line:73
+如果mFirstTouchTarget == null，意味着down事件当中没有子View处理。	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^## 如果mFirstTouchTarget == null，意味着down事件当中没有子View处理。$/;"	function	line:92
+如果mFirstTouchTarget ！= null，意味着down事件当中有子View处理。	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^## 如果mFirstTouchTarget ！= null，意味着down事件当中有子View处理。$/;"	function	line:96
+dispatchTouchEvent方法	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^# dispatchTouchEvent方法$/;"	function	line:101
+dispatchTransformedTouchEvent方法	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^# dispatchTransformedTouchEvent方法$/;"	function	line:323
+onFilterTouchEventForSecurity方法	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^# onFilterTouchEventForSecurity方法$/;"	function	line:406
+canViewReceivePotnterEvents方法	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^# canViewReceivePotnterEvents方法$/;"	function	line:429
+addTouchTarget方法	/Users/apple/mycode/myBlog/source/_posts/从源码去理解事件分发.md	/^# addTouchTarget方法$/;"	function	line:443
+背景	/Users/apple/mycode/myBlog/source/_posts/安卓上面的NFC简单应用实例.md	/^#背景$/;"	function	line:6
+NFC简介	/Users/apple/mycode/myBlog/source/_posts/安卓上面的NFC简单应用实例.md	/^#NFC简介$/;"	function	line:10
+安卓手机支持的NFC标签类型	/Users/apple/mycode/myBlog/source/_posts/安卓上面的NFC简单应用实例.md	/^#安卓手机支持的NFC标签类型$/;"	function	line:14
+NFC标签和android设备的通信	/Users/apple/mycode/myBlog/source/_posts/安卓上面的NFC简单应用实例.md	/^#NFC标签和android设备的通信$/;"	function	line:19
+NFC权限	/Users/apple/mycode/myBlog/source/_posts/安卓上面的NFC简单应用实例.md	/^#NFC权限$/;"	function	line:23
+NFC的分发系统	/Users/apple/mycode/myBlog/source/_posts/安卓上面的NFC简单应用实例.md	/^#NFC的分发系统$/;"	function	line:29
+a、标签分发系统	/Users/apple/mycode/myBlog/source/_posts/安卓上面的NFC简单应用实例.md	/^##a、标签分发系统$/;"	function	line:34
+前台分发系统（the Foreground Dispatch System）	/Users/apple/mycode/myBlog/source/_posts/安卓上面的NFC简单应用实例.md	/^##前台分发系统（the Foreground Dispatch System）$/;"	function	line:96
+注册前台分发系统	/Users/apple/mycode/myBlog/source/_posts/安卓上面的NFC简单应用实例.md	/^###注册前台分发系统$/;"	function	line:103
+取消注册前台分发系统	/Users/apple/mycode/myBlog/source/_posts/安卓上面的NFC简单应用实例.md	/^###取消注册前台分发系统$/;"	function	line:129
+MifareClassic类型的NFC标签的数据结构	/Users/apple/mycode/myBlog/source/_posts/安卓上面的NFC简单应用实例.md	/^#MifareClassic类型的NFC标签的数据结构$/;"	function	line:139
+nfc信息的读取	/Users/apple/mycode/myBlog/source/_posts/安卓上面的NFC简单应用实例.md	/^#nfc信息的读取$/;"	function	line:145

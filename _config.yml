@@ -3,10 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: believe yourself
+title: Believe yourself
 subtitle:
 description:
 author: aheadlcx
+# author: 增城仙荔多商店
 language: zh-Hans
 timezone:
 email: aheadlcxzhang@gmail.com
@@ -52,9 +53,9 @@ default_category: uncategorized
 category_map:
 tag_map:
 
-archive: 1
-category: 1
-tag: 1
+archive: 0
+category: 0
+tag: 0
 
 
 # Date / Time format
