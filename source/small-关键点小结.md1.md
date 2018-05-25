@@ -3,6 +3,39 @@ date: 2018-03-04 14:41:57
 tags:
 ---
 
+### AppPlugin 怎么区分哪些资源是自身 module 的。
+在 variant.mergeResources.incrementalFolder 目录下的 merger.xml 记录了，这个 app 的所有资源，(small.mergerXml)。格式如下：  
+属于自身 module 的时候，是  
+
+````java
+    <dataSet config="main" generated-set="main$Generated">
+        <source
+            path="/Users/apple/mycode/androidFile/github/Small/Android/Sample/app.mine/src/main/res">
+            <file name="activity_main"
+                  path="/Users/apple/mycode/androidFile/github/Small/Android/Sample/app.mine/src/main/res/layout/activity_main.xml"
+                  qualifiers="" type="layout"/>
+                  ....
+
+        </source>
+    </dataSet>
+````
+
+非自身 module 的资源是这样格式的 
+
+````java
+    <dataSet config="default" from-dependency="true" generated-set="default$Generated">
+        <source
+            path="/Users/apple/mycode/androidFile/github/Small/Android/Sample/lib.style/build/intermediates/bundles/default/res">
+            <file name="my_fade_in"
+                  path="/Users/apple/mycode/androidFile/github/Small/Android/Sample/lib.style/build/intermediates/bundles/default/res/anim/my_fade_in.xml"
+                  qualifiers="" type="anim"/>
+                  ....
+
+        </source>
+    </dataSet>
+````
+
+
 
 
 ### hookVariantTask 方法
